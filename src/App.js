@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import "./App.css"
-import NasaData from "./components/chartbar/NasaData"
+import NasaData from "./component/nasadata/NasaDataBar"
 
 class App extends Component {
   state = {}
