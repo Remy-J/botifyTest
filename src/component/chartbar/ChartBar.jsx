@@ -6,7 +6,7 @@ class ChartBar extends Component {
     return (
       <Chart
         width={"1200px"}
-        height={"800px"}
+        height={"900px"}
         chartType="BarChart"
         loader={<div>Loading Chart</div>}
         data={[
