@@ -23,7 +23,7 @@ class NasaData extends Component {
         ])
       })
       data.sort((a, b) => {
-        return (b[1] + b[2]) / 2 - (a[1] + a[2]) / 2
+        return b[2] - b[1] - (a[2] - a[1])
       })
       this.setState({ structuredData: data })
       console.log(this.state.structuredData)
