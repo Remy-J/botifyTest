@@ -1,12 +1,10 @@
 import React, { Component } from "react"
 import Chart from "react-google-charts"
-import DropDownButton from "../dropdownbutton/DropDownButton"
 
 class ChartBar extends Component {
   render() {
     return (
       <div>
-        <DropDownButton />
         <Chart
           width={"1200px"}
           height={"900px"}

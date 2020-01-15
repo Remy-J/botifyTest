@@ -5,8 +5,8 @@ class ChartTable extends Component {
   render() {
     return (
       <Chart
-        width={"500px"}
-        height={"300px"}
+        width={"1200px"}
+        height={"900px"}
         chartType="Table"
         loader={<div>Loading Chart</div>}
         data={[

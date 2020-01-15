@@ -2,9 +2,14 @@ import React, { Component } from "react"
 import axios from "axios"
 import ChartBar from "../chartbar/ChartBar"
 import ChartTable from "../chartTable/ChartTable"
+import DropDownButton from "../dropdownbutton/DropDownButton"
 
 class NasaData extends Component {
-  state = { data: [], structuredData: [], displayTable: false }
+  state = {
+    data: [],
+    structuredData: [],
+    displayTable: false
+  }
 
   getData = async () => {
     //we retrieve the data from the api and store it in the STATE
@@ -33,6 +38,18 @@ class NasaData extends Component {
     }
   }
 
+  filterClick = e => {
+    const newDataStructured = []
+    this.state.data.map(element => {
+      if (element.orbital_data.orbit_id.includes(e.target.value))
+        newDataStructured.push([
+          element["name"],
+          element["estimated_diameter"]["kilometers"]["estimated_diameter_min"],
+          element["estimated_diameter"]["kilometers"]["estimated_diameter_max"]
+        ])
+    })
+    this.setState({ structuredData: newDataStructured })
+  }
   handleClick = () => {
     this.setState({ displayTable: !this.state.displayTable })
   }
@@ -45,6 +62,7 @@ class NasaData extends Component {
     return (
       <div>
         <button onClick={this.handleClick}>Change View</button>
+        <DropDownButton data={this.state.data} filter={this.filterClick} />
         {this.state.displayTable ? (
           <ChartTable data={this.state.structuredData} />
         ) : (
