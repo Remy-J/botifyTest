@@ -1,9 +1,10 @@
 import React, { Component } from "react"
 import axios from "axios"
 import ChartBar from "../chartbar/ChartBar"
+import ChartTable from "../chartTable/ChartTable"
 
 class NasaData extends Component {
-  state = { data: [], structuredData: [] }
+  state = { data: [], structuredData: [], displayTable: false }
 
   getData = async () => {
     //we retrieve the data from the api and store it in the STATE
@@ -32,6 +33,10 @@ class NasaData extends Component {
     }
   }
 
+  handleClick = () => {
+    this.setState({ displayTable: !this.state.displayTable })
+  }
+
   componentDidMount() {
     this.getData()
   }
@@ -39,7 +44,12 @@ class NasaData extends Component {
   render() {
     return (
       <div>
-        <ChartBar data={this.state.structuredData} />
+        <button onClick={this.handleClick}>Change View</button>
+        {this.state.displayTable ? (
+          <ChartTable data={this.state.structuredData} />
+        ) : (
+          <ChartBar data={this.state.structuredData} />
+        )}
       </div>
     )
   }
