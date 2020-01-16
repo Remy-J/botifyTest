@@ -7,7 +7,6 @@ This project display the data retrieved by the NASA API in a google chart format
 
 Axios </br>
 React-google-charts </br>
-React-bootstrap </br>
 
 ### Quick Start
 
